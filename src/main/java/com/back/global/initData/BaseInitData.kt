@@ -2,7 +2,6 @@ package com.back.global.initData
 
 import com.back.domain.member.member.service.MemberService
 import com.back.domain.post.post.service.PostService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,11 +12,9 @@ import org.springframework.transaction.annotation.Transactional
 class BaseInitData(
     private val memberService: MemberService,
     private val postService: PostService,
-) {
-    @Autowired
     @Lazy
-    private lateinit var self: BaseInitData
-
+    private val self: BaseInitData
+) {
     @Bean
     fun baseInitDataApplicationRunner(): ApplicationRunner =
         ApplicationRunner { self.work1() }
